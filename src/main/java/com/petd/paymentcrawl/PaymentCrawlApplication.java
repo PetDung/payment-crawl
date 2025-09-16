@@ -14,9 +14,17 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @EnableScheduling
-public class PaymentCrawlApplication {
+public class PaymentCrawlApplication implements CommandLineRunner {
+
+    PaymentHandler paymentHandler;
+
     public static void main(String[] args) {
         SpringApplication.run(PaymentCrawlApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
+        paymentHandler.pushJobFromStartOfLastMonth();
     }
 
 }
