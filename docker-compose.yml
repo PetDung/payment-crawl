@@ -1,0 +1,8 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: payment_crawl:latest
+    container_name: payment_crawl
+    restart: unless-stopped
